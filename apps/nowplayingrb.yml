@@ -1,0 +1,13 @@
+repo: github.com/bhoggard/nowplaying-rb
+mount: /app
+image: ruby:2.2.2
+host_forwarding:
+- host_name: nowplaying.dev
+  host_port: 80
+  container_port: 9292
+
+commands:
+  once:
+  - bundle install
+  always:
+  - rackup -o 0.0.0.0
