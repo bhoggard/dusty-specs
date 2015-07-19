@@ -1,0 +1,21 @@
+repo: github.com/bhoggard/myapp
+mount: /app
+image: ruby:2.2.2
+host_forwarding:
+- host_name: myapp.dev
+  host_port: 80
+  container_port: 9292
+
+depends:
+  services:
+  - postgres
+
+compose:
+  environment:
+    DATABASE_URL: postgres://postgres@postgres/artcat_development
+
+commands:
+  once:
+  - bundle install
+  always:
+  - rackup -o 0.0.0.0

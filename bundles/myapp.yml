@@ -1,0 +1,3 @@
+description: Sinatra / ActiveRecord test app
+apps:
+- myapp
